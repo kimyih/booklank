@@ -1,0 +1,77 @@
+.book-list {
+  justify-content: space-between;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 100px;
+
+}
+
+.book-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  width: 250px;
+  cursor: pointer;
+  background-color: #ffeed1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      transition: 0.3s;
+  }
+
+  h3 {
+      font-size: 16px;
+      padding: 10px;
+      height: 80px;
+      width: 100%;
+      text-align: center;
+  }
+
+  p {
+      font-size: 14px;
+      padding: 10px;
+      color: #4E4E4E;
+      width: 100%;
+      text-align: center;
+  }
+  .price {
+    font-size: 14px;
+    color: #4E4E4E;
+}
+  .book-image {
+      height: 300px;
+      padding: 30px;
+      margin-bottom: 10px;
+      margin: 0 auto;
+      object-fit: cover;
+      object-fit: contain;
+      background-color: #ffffff;
+  }
+
+  
+}
+.button-grid{
+ justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  
+    .button-title{
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      transition: all 0.2s;
+      &:hover{
+        background-color: #ffe5b8;
+      }
+      a{
+          font-size: 12px;
+          border-radius: 20px;
+          padding: 10px 0;
+          color: #000000;
+        }
+    }
+  
+}
