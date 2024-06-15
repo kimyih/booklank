@@ -42,9 +42,9 @@ const BookList = ({ title, kyoboBaseURL, yes24BaseURL, aladinBaseURL, filePrefix
                 const yes24Data = await yes24Response.json();
                 const aladinData = await aladinResponse.json();
 
-                setKyoboBooks(kyoboData.slice(0, 6));
-                setYes24Books(yes24Data.slice(0, 6));
-                setAladinBooks(aladinData.slice(0, 6));
+                setKyoboBooks(kyoboData.slice(0, 10));
+                setYes24Books(yes24Data.slice(0, 10));
+                setAladinBooks(aladinData.slice(0, 10));
             } catch (error) {
                 console.error('Error fetching books:', error);
             }
@@ -58,7 +58,7 @@ const BookList = ({ title, kyoboBaseURL, yes24BaseURL, aladinBaseURL, filePrefix
         return books.filter(book =>
             book.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
-    };
+    }; 
 
     // 검색어 입력 시 상태 업데이트
     const handleSearch = (searchTerm) => {

@@ -1,7 +1,11 @@
 import React from 'react';
 import Modal from 'react-modal';
-
 const BookModal = ({ isOpen, onRequestClose, book }) => {
+    const handleBuyClick = () => {
+        if (book && book.url) {
+            window.open(book.url, '_blank');
+        }
+    };
     return (
         <Modal
             isOpen={isOpen}
@@ -25,8 +29,8 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
                                 <span className="original-price">{book.originalPrice}</span>
                                 <span className="discounted-price">가격: {book.price}</span>
                             </p>
-                            <p>.</p>
-                            <button className="buy-button">구매하러가기</button>
+                            <p>{book.description}</p>
+                            <button className="buy-button" onClick={handleBuyClick}>구매하러가기</button>
                         </div>
                     </div>
                 </div>
@@ -34,5 +38,4 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
         </Modal>
     );
 };
-
 export default BookModal;
