@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { LiaCalendarAltSolid } from "react-icons/lia";
-import headermenus from '../data/headerMenu';
+import detailmenus from '../../data/headerMenu';
 
 const BookDetails = () => {
     const { source, filePrefix } = useParams(); // 경로 매개변수 추출
     const [books, setBooks] = useState([]);
-    const [fetchDate, setFetchDate] = useState(new Date('2024-06-13')); // 시작 날짜를 5월 29일로 설정
+    const [fetchDate, setFetchDate] = useState(new Date('2024-06-13')); // 시작 날짜를 6월 13일로 설정
     const formattedDate = fetchDate.toISOString().slice(0, 10); // YYYY-MM-DD 형식으로 변환
     const today = new Date();
+    const [activeButton, setActiveButton] = useState(0); // 활성화된 버튼 인덱스 상태 추가
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -19,8 +20,10 @@ const BookDetails = () => {
             let baseURL = '';
             if (source === 'kyobo') {
                 baseURL = `https://raw.githubusercontent.com/seodaewon1/book/main/Kyobo/${filePrefix}/`;
-            } else {
+            } else if (source === 'yes24') {
                 baseURL = `https://raw.githubusercontent.com/kimyih/Book/main/Yes24/${filePrefix}/`;
+            } else if (source === 'aladin') {
+                baseURL = `https://raw.githubusercontent.com/kimyih/Book/main/Aladin/${filePrefix}/`;
             }
             const url = `${baseURL}${filePrefix}_${formattedDate}.json`;
 
@@ -42,47 +45,52 @@ const BookDetails = () => {
     }, [source, formattedDate, filePrefix]);
 
     return (
-        <div className="layout-container">
-            <div className="BookDetails">
-            <div className='button-grid'>
-                    {headermenus.map((menu, index) => (
-                        <div key={index} className={`button-grid__button`}>
-                        <div className='button-title'>
-                            <Link to={menu.src}>{menu.title}</Link>
-                        </div>
-                        </div>
-                    ))}
-                </div>
-                <h1>{getSourceTitle(source)}</h1> {/* Display title */}
-                <h2>{getKoreanFilePrefix(filePrefix)}</h2>
-                <div className='date'>
-                    <p>{formattedDate} 기준</p>
-                    <div className='date2'>
-                        <LiaCalendarAltSolid />
-                        <DatePicker
-                            selected={fetchDate}
-                            onChange={(date) => setFetchDate(date)}
-                            dateFormat="yyyy-MM-dd"
-                            minDate={new Date('2024-05-29')}
-                            maxDate={today}
-                        />
+        <div className="Main__main">
+            <div className="layout-container">
+                <div className="BookDetails">
+                    <div className='button-grid'>
+                        {detailmenus.map((menu, index) => (
+                            <div
+                                key={index}
+                                className={`button-grid__button ${index === activeButton ? 'active' : ''}`}
+                                onClick={() => setActiveButton(index)}
+                            >
+                                <div className='button-title'>
+                                    <Link to={`${menu.src}/${filePrefix}`}>{menu.title}</Link>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                </div>
+                    <h2>{getKoreanFilePrefix(filePrefix)}</h2>
+                    <div className='date'>
+                        <p>{formattedDate} 기준</p>
+                        <div className='date2'>
+                            <LiaCalendarAltSolid />
+                            <DatePicker
+                                selected={fetchDate}
+                                onChange={(date) => setFetchDate(date)}
+                                dateFormat="yyyy-MM-dd"
+                                minDate={new Date('2024-05-29')}
+                                maxDate={today}
+                            />
+                        </div>
+                    </div>
 
-                <ul className="book-list2">
-                    {books.length === 0 ? (
-                        <p>책을 찾을 수 없습니다.</p> // 책이 없을 때 메시지 표시
-                    ) : (
-                        books.map((book, index) => (
-                            <li key={index} className="book-item2">
-                                <img src={book.imageURL} alt={book.title} className="book-image2" />
-                                <h3>{book.title}</h3>
-                                <p>{book.author}</p>
-                                <p>{book.price}</p>
-                            </li>
-                        ))
-                    )}
-                </ul>
+                    <ul className="book-list2">
+                        {books.length === 0 ? (
+                            <p>책을 찾을 수 없습니다.</p> // 책이 없을 때 메시지 표시
+                        ) : (
+                            books.map((book, index) => (
+                                <li key={index} className="book-item2">
+                                    <img src={book.imageURL} alt={book.title} className="book-image2" />
+                                    <h3>{book.title}</h3>
+                                    <p>{book.author}</p>
+                                    <p>{book.price}</p>
+                                </li>
+                            ))
+                        )}
+                    </ul>
+                </div>
             </div>
         </div>
     );
@@ -92,7 +100,7 @@ const getKoreanFilePrefix = (filePrefix) => {
     switch (filePrefix) {
         case 'Geonseol':
             return '건설기능사';
-        case 'hansik':
+        case 'Hansik':
             return '한식기능사';
         case 'Jegwa':
             return '제과기능사';
@@ -115,12 +123,13 @@ const getKoreanFilePrefix = (filePrefix) => {
         case 'Pibu':
             return '미용사(피부)';
         default:
-            return filePrefix; // Return original if no translation available
+            return filePrefix; // 번역이 없으면 원래 값 반환
     }
 };
+
 // Function to get source title (you can replace with actual translations)
-const getSourceTitle = (source) => {
-    switch (source) {
+const getSourceTitle = (filePrefix) => {
+    switch (filePrefix) {
         case 'kyobo':
             return '교보문고';
         case 'yes24':
@@ -128,7 +137,7 @@ const getSourceTitle = (source) => {
         case 'aladin':
             return '알라딘';
         default:
-            return source; // Return original if no translation available
+            return filePrefix; // 번역이 없으면 원래 값 반환
     }
 };
 

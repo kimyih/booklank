@@ -1,8 +1,5 @@
 export const headermenus = [
-    {
-        title: "건설안전기사",
-        src: "/Geonseol"
-    },
+
     {
         title: "한식조리기능사",
         src: "/hansik"
@@ -36,6 +33,10 @@ export const headermenus = [
         src: "/Jige"
     },
     {
+        title: "건설안전기사",
+        src: "/Geonseol"
+    },
+    {
         title: "미용사(일반)",
         src: "/iiban"
     },
@@ -57,4 +58,20 @@ export const headermenus = [
     // },
 ];
 
-export default headermenus;
+export const detailmenus = [
+    {
+        title: "교보문고",
+        src: "/kyobo"
+    },
+    {
+        title: "yes24",
+        src: "/yes24"
+    },
+    {
+        title: "알라딘",
+        src: "/aladin"
+    },
+
+];
+
+export default detailmenus;
