@@ -6,8 +6,7 @@
 
 .layout-container {
     margin: 0 auto;
-    max-width: 1060px;
-    width: 100%;
+    width: 1060px;
     position: relative;
     font-family: var(--mainKorfont);
 
@@ -47,34 +46,66 @@
             }
         }
     }
-
 }
 
 .book-list2 {
     display: flex;
-    flex-wrap: wrap;
+    gap: 3%;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     margin-bottom: 100px;
-    gap: 10px;
+    overflow: hidden;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .book-item2 {
     display: flex;
     flex-direction: column;
+    align-items: center;
     border-radius: 4px;
     cursor: pointer;
     width: 200px;
-    position: relative;
 
     h3 {
         display: flex;
-        font-size: 16px;
-        padding: 10px;
+        justify-content: center;
+
+        .book-rank {
+            position: absolute;
+            top: 220px;
+            left: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 800;
+            font-size: 3rem;
+            color: rgb(16, 40, 255);
+        }
+
+        .book-image2 {
+            width: 100%;
+            height: 310px;
+            object-fit: contain;
+            background-color: #ffffff;
+            border-bottom: 1px solid #c9c9c9b2;
+            border-radius: 10px
+        }
     }
 
-    p {
-        font-size: 14px;
-        padding: 10px;
-        color: #4E4E4E;
+    .book2_bottom {
+
+
+        h3 {
+            font-size: 16px;
+            padding: 10px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        p {
+            font-size: 14px;
+            color: #4E4E4E;
+        }
     }
 
     .price {
@@ -94,27 +125,10 @@
         border-radius: 10px;
     }
 
+
 }
 
-.book-rank2 {
-    position: absolute;
-    top: 150px;
-    left: 5px;
-    color: rgb(16, 40, 255);
-    font-size: 12px;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 3rem;
-    font-weight: 800;
-    text-shadow:
-      -1px -1px 0 rgb(255, 255, 255),
-      1px -1px 0 rgb(255, 255, 255),
-      -1px 1px 0 rgb(255, 255, 255),
-      1px 1px 0 rgb(255, 255, 255);
-  }
-
 .BookDetails {
-
     .date {
         text-align: right;
         margin-bottom: 10px;
@@ -127,7 +141,6 @@
             font-size: 12px;
         }
 
-
         svg {
             width: 34px;
             height: 34px;
@@ -139,9 +152,7 @@
             text-align: right;
             width: 140px;
             font-weight: 600;
-
         }
-
     }
 
     .date2 {
