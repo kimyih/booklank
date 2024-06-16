@@ -11,7 +11,7 @@
   flex-direction: column;
   border-radius: 4px;
   cursor: pointer;
-  width: 160px;
+  width: 180px;
 
   &:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -37,8 +37,8 @@
   }
 
   .book-image {
-    width: 160px;
-    height: 233px;
+    width: 180px;
+    height: 248px;
     margin-bottom: 10px;
     margin: 0 auto;
     object-fit: cover;

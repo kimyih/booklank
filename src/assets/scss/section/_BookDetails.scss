@@ -6,7 +6,8 @@
 
 .layout-container {
     margin: 0 auto;
-    width: 1060px;
+    max-width: 1060px;
+    width: 100%;
     position: relative;
     font-family: var(--mainKorfont);
 
@@ -51,6 +52,45 @@
 .book-list2 {
     display: flex;
     gap: 3%;
+    margin-bottom: 100px;
+    overflow: hidden;
+    padding: 10px;
+  }
+  
+  .book-item2 {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 180px;
+  
+    &:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      transition: 0.3s;
+    }
+  
+    h3 {
+      display: flex;
+      font-size: 16px;
+      padding: 10px;
+      height: 120px;
+    }
+  
+    p {
+      font-size: 14px;
+      padding: 10px;
+      color: #4E4E4E;
+    }
+  
+    .price {
+      font-size: 14px;
+      color: #4E4E4E;
+    } 
+  }
+
+.book-list2 {
+    display: flex;
+    gap: 3%;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     margin-bottom: 100px;
     overflow: hidden;
@@ -65,31 +105,13 @@
     align-items: center;
     border-radius: 4px;
     cursor: pointer;
-    width: 200px;
+    position: relative;
+    margin-bottom: 1rem;
 
     h3 {
         display: flex;
         justify-content: center;
 
-        .book-rank {
-            position: absolute;
-            top: 220px;
-            left: 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: 800;
-            font-size: 3rem;
-            color: rgb(16, 40, 255);
-        }
-
-        .book-image2 {
-            width: 100%;
-            height: 310px;
-            object-fit: contain;
-            background-color: #ffffff;
-            border-bottom: 1px solid #c9c9c9b2;
-            border-radius: 10px
-        }
     }
 
     .book2_bottom {
@@ -125,8 +147,25 @@
         border-radius: 10px;
     }
 
-
+    .book-rank2 {
+        position: absolute;
+        top: 150px;
+        left: 5px;
+        color: rgb(16, 40, 255);
+        font-size: 12px;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 3rem;
+        font-weight: 800;
+        text-shadow:
+          -1px -1px 0 rgb(255, 255, 255),
+          1px -1px 0 rgb(255, 255, 255),
+          -1px 1px 0 rgb(255, 255, 255),
+          1px 1px 0 rgb(255, 255, 255);
+      }
 }
+
+
 
 .BookDetails {
     .date {
