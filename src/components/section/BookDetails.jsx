@@ -90,11 +90,17 @@ const BookDetails = () => {
                             <p>책을 찾을 수 없습니다.</p> // 책이 없을 때 메시지 표시
                         ) : (
                             books.map((book, index) => (
-                                <li key={index} className="book-item" onClick={() => handleBookClick(book)}>
-                                <span className="book-rank">{index + 1}</span>
-                                <img src={book.imageURL} alt={book.title} className="book-image" />
-                                <h3>{book.title}</h3>
-                                <p>{book.author}</p>
+                                <li key={index} className="book-item2" onClick={() => handleBookClick(book)}>
+                                    <div className='book2_top'>
+                                        <span className="book-rank">{index + 1}</span>
+                                        <img src={book.imageURL} alt={book.title} className="book-image2" />
+                                    </div>
+                                    <div className='book2_bottom'>
+                                        <h3>{book.title}</h3>
+                                        <p>{book.author}</p>
+                                    </div>
+                                
+                                
                             </li>
                             ))
                         )}

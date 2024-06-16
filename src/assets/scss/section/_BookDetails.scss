@@ -51,10 +51,13 @@
 }
 
 .book-list2 {
-    display: flex;
-    flex-wrap: wrap;
     margin-bottom: 100px;
-    gap: 10px;
+    gap: 3%;
+    width: 100%;
+    max-width: 1060px;
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr)); 
 }
 
 .book-item2 {
@@ -62,7 +65,24 @@
     flex-direction: column;
     border-radius: 4px;
     cursor: pointer;
-    width: 200px;
+    width: 100%;
+    
+    
+    .book2_top {
+        position: relative;
+        border: 1px solid rgba(201, 201, 201, 0.6980392157);
+        
+        .book-rank {
+            position: absolute;
+        }
+        .img {
+            position: absolute;
+            height: 310px;
+            object-fit: contain;
+        }
+    }
+
+    .book2_bottom {}
 
     h3 {
         display: flex;
