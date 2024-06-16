@@ -11,7 +11,7 @@
   flex-direction: column;
   border-radius: 4px;
   cursor: pointer;
-  width: 160px;
+  width: 100%;
 
   &:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -22,7 +22,7 @@
     display: flex;
     font-size: 16px;
     padding: 10px;
-    height: 100px;
+    height: 120px;
   }
 
   p {
@@ -37,8 +37,8 @@
   }
 
   .book-image {
-    width: 160px;
-    height: 233px;
+    width: 180px;
+    height: 256px;
     margin-bottom: 10px;
     margin: 0 auto;
     object-fit: cover;
@@ -94,8 +94,8 @@
 
 .book-rank {
   position: absolute;
-  top: 150px;
-  left: 5px;
+  top: 180px;
+  left: 10px;
   color: rgb(16, 40, 255);
   font-size: 12px;
   padding: 5px;

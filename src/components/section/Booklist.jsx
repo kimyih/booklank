@@ -42,9 +42,9 @@ const BookList = ({ title, kyoboBaseURL, yes24BaseURL, aladinBaseURL, filePrefix
                 const yes24Data = await yes24Response.json();
                 const aladinData = await aladinResponse.json();
 
-                setKyoboBooks(kyoboData.slice(0, 10));
-                setYes24Books(yes24Data.slice(0, 10));
-                setAladinBooks(aladinData.slice(0, 10));
+                setKyoboBooks(kyoboData.slice(0, 5));
+                setYes24Books(yes24Data.slice(0, 5));
+                setAladinBooks(aladinData.slice(0, 5));
             } catch (error) {
                 console.error('Error fetching books:', error);
             }

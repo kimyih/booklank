@@ -8,7 +8,7 @@ import BookModal from './BookModal';
 const BookDetails = () => {
     const { source, filePrefix } = useParams(); // 경로 매개변수 추출
     const [books, setBooks] = useState([]);
-    const [fetchDate, setFetchDate] = useState(new Date('2024-06-13')); // 시작 날짜를 6월 13일로 설정
+    const [fetchDate, setFetchDate] = useState(new Date('2024-06-16')); // 시작 날짜를 6월 13일로 설정
     const formattedDate = fetchDate.toISOString().slice(0, 10); // YYYY-MM-DD 형식으로 변환
     const today = new Date();
     const [activeButton, setActiveButton] = useState(0); // 활성화된 버튼 인덱스 상태 추가
@@ -90,9 +90,9 @@ const BookDetails = () => {
                             <p>책을 찾을 수 없습니다.</p> // 책이 없을 때 메시지 표시
                         ) : (
                             books.map((book, index) => (
-                                <li key={index} className="book-item" onClick={() => handleBookClick(book)}>
-                                <span className="book-rank">{index + 1}</span>
-                                <img src={book.imageURL} alt={book.title} className="book-image" />
+                                <li key={index} className="book-item2" onClick={() => handleBookClick(book)}>
+                                <span className="book-rank2">{index + 1}</span>
+                                <img src={book.imageURL} alt={book.title} className="book-image2" />
                                 <h3>{book.title}</h3>
                                 <p>{book.author}</p>
                             </li>
