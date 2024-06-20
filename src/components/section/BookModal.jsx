@@ -43,4 +43,5 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
         </Modal>
     );
 };
+
 export default BookModal;

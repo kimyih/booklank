@@ -72,7 +72,6 @@ const BookDetails = () => {
                     </div>
                     <h2>{getKoreanFilePrefix(filePrefix)}</h2>
                     <div className='date'>
-                        <p>{formattedDate} 기준</p>
                         <div className='date2'>
                             <LiaCalendarAltSolid />
                             <DatePicker
@@ -82,6 +81,7 @@ const BookDetails = () => {
                                 minDate={new Date('2024-05-29')}
                                 maxDate={today}
                             />
+                            기준
                         </div>
                     </div>
 
@@ -91,11 +91,14 @@ const BookDetails = () => {
                         ) : (
                             books.map((book, index) => (
                                 <li key={index} className="book-item2" onClick={() => handleBookClick(book)}>
-                                <span className="book-rank2">{index + 1}</span>
-                                <img src={book.imageURL} alt={book.title} className="book-image2" />
-                                <h3>{book.title}</h3>
-                                <p>{book.author}</p>
-                            </li>
+                                    <span className="book-rank">{index + 1}</span>
+                                    <img src={book.imageURL} alt={book.title} className="book-image" />
+                                    <div className='book-item2-text'>
+                                        <h3>{book.title}</h3>
+                                        <p>{book.author}</p>
+                                        <p className='price_text'>₩ {book.price}</p>
+                                    </div>
+                                </li>
                             ))
                         )}
                     </ul>
