@@ -81,7 +81,6 @@ const BookDetails = () => {
                                 minDate={new Date('2024-05-29')}
                                 maxDate={today}
                             />
-                            기준
                         </div>
                     </div>
 

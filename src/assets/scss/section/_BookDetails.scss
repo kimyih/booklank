@@ -1,22 +1,16 @@
-.Main__main {
-    list-style: none;
-    margin-top: 50px;
-    padding: 30px;
+.book-list2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    margin-bottom: 100px;
+    overflow: hidden;
+    padding: 10px 0px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.layout-container {
-    margin: 0 auto;
-    max-width: 1060px;
-    width: 100%;
-    position: relative;
-    font-family: var(--mainKorfont);
-
-    h1 {
-        font-weight: 600;
-        font-size: 1.5rem;
-        padding: 80px 0px 20px;
-    }
-
+.BookDetails {
     h2 {
         font-size: 1.5rem;
         display: flex;
@@ -27,39 +21,6 @@
         border-bottom: 1px solid #808080;
         font-weight: 800;
     }
-
-    span {
-        position: absolute;
-        right: 0;
-
-        a {
-            text-align: center;
-            font-size: 16px;
-            font-weight: 400;
-            cursor: pointer;
-            display: inline-block;
-            color: #555555;
-            transition: all 0.3s;
-
-            &:hover {
-                text-decoration: underline;
-                text-underline-position: under;
-            }
-        }
-    }
-}
-
-.book-list2 {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    margin-bottom: 100px;
-    overflow: hidden;
-    padding: 10px 0px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .book-item2 {
@@ -70,16 +31,17 @@
     cursor: pointer;
     width: 100%;
     position: relative;
+
     .book-rank {
         position: relative;
         top: unset;
         left: unset;
-        color: rgb(16, 40, 255);
+        color: var(--black);
         font-size: 12px;
         padding: 5px;
         border-radius: 5px;
-        font-size: 3rem;
-        font-weight: 800;
+        font-size: 2rem;
+        font-weight: 500;
         text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 rgb(255, 255, 255), -1px 1px 0 rgb(255, 255, 255), 1px 1px 0 rgb(255, 255, 255);
         display: flex;
         flex-direction: column;
@@ -87,12 +49,14 @@
         justify-content: center;
         min-width: 100px;
     }
+
     .book-image {
         width: 190px;
         height: 240px;
         object-fit: cover;
         border: 1px solid black;
     }
+
     .book-item2-text {
         width: fit-content;
         height: 240px;
@@ -101,9 +65,11 @@
         align-items: flex-start;
         justify-content: flex-start;
         margin-left: 20px;
+
         h3 {
             display: flex;
             font-size: 16px;
+            font-weight: 600;
             padding: 10px;
             transition: all 0.3s ease;
         }
@@ -117,17 +83,28 @@
             cursor: pointer;
             position: relative;
             margin-bottom: 1rem;
+
             &.price_text {
                 margin-bottom: 0px;
                 margin-top: auto;
             }
         }
     }
+
     &:hover {
         .book-item2-text {
             h3 {
                 color: rgb(16, 40, 255);
             }
         }
+    }
+}
+
+.date {
+    position: absolute;
+    right: 0;
+
+    .react-datepicker-wrapper {
+        width: 100px;
     }
 }
