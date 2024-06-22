@@ -3,7 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { LiaCalendarAltSolid } from "react-icons/lia";
 import detailmenus from '../../data/headerMenu';
-import BookModal from './BookModal';
+import BookModal from './BookModal'; // BookModal import
+import 'react-datepicker/dist/react-datepicker.css';
 
 const BookDetails = () => {
     const { source, filePrefix } = useParams(); // 경로 매개변수 추출
@@ -53,6 +54,17 @@ const BookDetails = () => {
         setIsModalOpen(true);
     };
 
+    // 책 구매 클릭 시 링크 열기
+    const handleBuyClick = (book) => {
+        if (book && book.url) {
+            let url = book.url;
+            if (!url.includes('https://')) {
+                url = `https://www.yes24.com/${url}`;
+            }
+            window.open(url, '_blank');
+        }
+    };
+
     return (
         <div className="Main__main">
             <div className="layout-container">
@@ -73,7 +85,7 @@ const BookDetails = () => {
                     <h2>{getKoreanFilePrefix(filePrefix)}</h2>
                     <div className='date'>
                         <div className='date2'>
-                            <LiaCalendarAltSolid />
+                            <LiaCalendarAltSolid /> 
                             <DatePicker
                                 selected={fetchDate}
                                 onChange={(date) => setFetchDate(date)}
@@ -89,13 +101,17 @@ const BookDetails = () => {
                             <p>책을 찾을 수 없습니다.</p> // 책이 없을 때 메시지 표시
                         ) : (
                             books.map((book, index) => (
-                                <li key={index} className="book-item2" onClick={() => handleBookClick(book)}>
+                                <li key={index} className="book-item2">
                                     <span className="book-rank">{index + 1}</span>
-                                    <img src={book.imageURL} alt={book.title} className="book-image" />
+                                    <img src={book.imageURL} alt={book.title} className="book-image" onClick={() => handleBookClick(book)} />
                                     <div className='book-item2-text'>
-                                        <h3>{book.title}</h3>
+                                        <h3 onClick={() => handleBookClick(book)}>{book.title}</h3>
                                         <p>{book.author}</p>
                                         <p className='price_text'>₩ {book.price}</p>
+                                    </div>
+                                    <div className='book-item2-info'>
+                                        <button className='book2-detail' onClick={() => handleBookClick(book)}>상세보기</button>
+                                        <button className='book2-buy' onClick={() => handleBuyClick(book)}>바로구매</button>
                                     </div>
                                 </li>
                             ))
